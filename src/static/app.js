@@ -427,8 +427,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Apply difficulty filter. Activities without a specified difficulty are
-      // considered suitable for all levels, so they always pass this filter.
+      // Apply difficulty filter. When a specific level is selected, activities
+      // without a specified difficulty are considered suitable for all levels
+      // and are still shown. When "All" is selected, every activity is shown.
       if (
         currentDifficulty &&
         details.difficulty &&
