@@ -321,14 +321,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     switch (platform) {
       case "twitter":
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        shareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(
           text
         )}&url=${encodeURIComponent(url)}`;
         break;
       case "facebook":
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
           url
-        )}&quote=${encodeURIComponent(text)}`;
+        )}`;
         break;
       case "whatsapp":
         shareUrl = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`;
@@ -364,7 +364,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Fallback for browsers without the Clipboard API
+    // Fallback for browsers without the Clipboard API.
+    // document.execCommand("copy") is deprecated but retained intentionally
+    // to support older browsers that lack navigator.clipboard.
     const textarea = document.createElement("textarea");
     textarea.value = content;
     textarea.setAttribute("readonly", "");
